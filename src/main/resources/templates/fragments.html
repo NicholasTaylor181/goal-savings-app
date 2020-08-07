@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
+<head th:fragment="header">
+
+    <title th:text="'Goal Savings' + ${title == null ? '' : ' :: ' + title}">Goal Savings</title>
+</head>
+<body>
+
+<div th:fragment="nav">
+    <div>
+        <div>
+            <a th:href="@{/}" >Goal Savings</a>
+        </div>
+        <div>
+            <ul>
+                <li th:if="${title.contains('Login')}"><a th:href="@{/register}">Register</a></li>
+                <li th:if="${title.contains('Register')}"><a th:href="@{/login}">Login</a></li>
+            </ul>
+            <ul th:unless="${title.contains('Login') or title.contains('Register')} ">
+                <li><a th:href="@{/add}">Add Goals</a></li>
+                <li><a th:href="@{/logout}">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
