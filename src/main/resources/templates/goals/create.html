@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: header">
+</head>
+<body>
+
+<div th:replace="fragments :: nav"></div>
+
+<div>
+    <h2>Goal Savings Goal Creation</h2>
+</div>
+
+<form method="post">
+    <div>
+        <label th:for="title">Title
+            <input th:field="${GoalFormDTO.title}">
+        </label>
+        <p th:errors="${GoalFormDTO.title}"></p>
+    </div>
+    <div>
+        <label>cost
+            <input th:field="${GoalFormDTO.cost}">
+        </label>
+        <p th:errors="${GoalFormDTO.cost}"></p>
+    </div>
+    <div>
+        <label>amountSaved
+            <input th:field="${GoalFormDTO.amountSaved}">
+        </label>
+        <p th:errors="${GoalFormDTO.amountSaved}"></p>
+    </div>
+    <div>
+    <label>isPublic
+        <input th:field="${GoalFormDTO.isPublic}">
+    </label>
+    <p th:errors="${GoalFormDTO.isPublic}"></p>
+</div>
+    <input type="submit" value="Create" />
+</form>
+</body>
+</html>
