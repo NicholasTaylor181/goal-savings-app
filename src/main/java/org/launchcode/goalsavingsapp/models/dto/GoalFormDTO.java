@@ -11,8 +11,7 @@ public class GoalFormDTO {
     @Size(min=3, max=50, message="Username must be between 3 and 50 characters")
     private String title;
 
-    @NotNull
-    @NotBlank(message="Must not be blank")
+    @NotNull(message="Must not be blank")
     private int cost;
 
     private int amountSaved;
@@ -43,11 +42,11 @@ public class GoalFormDTO {
         this.amountSaved = amountSaved;
     }
 
-    public boolean isPublic() {
+    public boolean getIsPublic() {
         return isPublic;
     }
 
-    public void setPublic(boolean aPublic) {
+    public void setIsPublic(boolean aPublic) {
         isPublic = aPublic;
     }
 }

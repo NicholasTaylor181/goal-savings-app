@@ -13,27 +13,26 @@
 <form method="post">
     <div>
         <label th:for="title">Title
-            <input th:field="${goal.title}">
+            <input th:field="${goalFormDTO.title}">
         </label>
-        <p th:errors="${goal.title}"></p>
+        <p th:errors="${goalFormDTO.title}"></p>
     </div>
     <div>
         <label>cost
-            <input th:field="${goal.cost}">
+            <input th:field="${goalFormDTO.cost}">
         </label>
-        <p th:errors="${goal.cost}"></p>
+        <p th:errors="${goalFormDTO.cost}"></p>
     </div>
     <div>
         <label>amountSaved
-            <input th:field="${goal.amountSaved}">
+            <input th:field="${goalFormDTO.amountSaved}">
         </label>
-        <p th:errors="${goal.amountSaved}"></p>
+        <p th:errors="${goalFormDTO.amountSaved}"></p>
     </div>
     <div>
-<!--    <label>isPublic
-        <input th:field="${goal.isPublic}">
+    <label>isPublic
+        <input type="checkbox" name="isPublic" th:checked="${goalFormDTO.isPublic}">
     </label>
-    <p th:errors="${goal.isPublic}"></p>  -->
 </div>
     <input type="submit" value="Create" />
 </form>
