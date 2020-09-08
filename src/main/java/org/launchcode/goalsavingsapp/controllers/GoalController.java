@@ -24,12 +24,14 @@ public class GoalController {
 
     @GetMapping
     public String viewGoals(Model model) {
+        model.addAttribute("title", "My Goals");
         model.addAttribute("goals", goalRepository.findAll());
         return "goals/index";
     }
 
     @GetMapping("create")
     public String displayCreateGoalsForm(Model model){
+        model.addAttribute("title", "Create Goals");
         model.addAttribute(new GoalFormDTO());
         return "goals/create";
     }

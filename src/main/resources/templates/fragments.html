@@ -14,13 +14,13 @@
         </div>
         <div>
             <ul>
-                <!--<li th:if="${title.contains('Login')}"><a th:href="@{/register}">Register</a></li>
-                <li th:if="${title.contains('Register')}"><a th:href="@{/login}">Login</a></li>-->
+                <li th:if="${title.contains('Login')}"><a th:href="@{/register}">Register</a></li>
+                <li th:if="${title.contains('Register')}"><a th:href="@{/login}">Login</a></li>
             </ul>
-           <!-- <ul th:unless="${title.contains('Login') or title.contains('Register')} ">
-                <li><a th:href="@{/add}">Add Goals</a></li>
+            <ul th:unless="${title.contains('Login') or title.contains('Register')} ">
+                <li><a th:href="@{/goal/add}">Add Goals</a></li>
                 <li><a th:href="@{/logout}">Logout</a></li>
-            </ul>-->
+            </ul>
         </div>
     </div>
 </div>

@@ -17,6 +17,7 @@ public class Goal extends AbstractEntity {
 
     private boolean isPublic;
 
+
     private boolean isCompleted;
 
     public Goal() {}
@@ -32,6 +33,8 @@ public class Goal extends AbstractEntity {
         this.cost = cost;
         this.isPublic = isPublic;
         this.amountSaved = amountSaved;
+        setIsCompleted();
+
     }
 
     public String getTitle() {
@@ -64,5 +67,9 @@ public class Goal extends AbstractEntity {
 
     public void setPublic(boolean aPublic) {
         isPublic = aPublic;
+    }
+
+    private void setIsCompleted() {
+        isCompleted = cost == amountSaved;
     }
 }
