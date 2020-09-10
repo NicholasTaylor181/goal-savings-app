@@ -18,6 +18,8 @@ public class GoalFormDTO {
 
     private boolean isPublic;
 
+    private boolean completed;
+
     public String getTitle() {
         return title;
     }
@@ -48,5 +50,15 @@ public class GoalFormDTO {
 
     public void setIsPublic(boolean aPublic) {
         isPublic = aPublic;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+
+
     }
 }

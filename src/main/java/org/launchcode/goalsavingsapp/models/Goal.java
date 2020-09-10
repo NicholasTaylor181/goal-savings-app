@@ -18,7 +18,7 @@ public class Goal extends AbstractEntity {
     private boolean isPublic;
 
 
-    private boolean isCompleted;
+    private boolean completed;
 
     public Goal() {}
 
@@ -61,7 +61,7 @@ public class Goal extends AbstractEntity {
         this.amountSaved = amountSaved;
     }
 
-    public boolean isPublic() {
+    public boolean getIsPublic() {
         return isPublic;
     }
 
@@ -70,6 +70,19 @@ public class Goal extends AbstractEntity {
     }
 
     private void setIsCompleted() {
-        isCompleted = cost == amountSaved;
+        completed = cost == amountSaved;
     }
+
+
+
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
+
+    //decimals and negatives not dealt this yet
 }
