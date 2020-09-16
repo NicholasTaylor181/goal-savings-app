@@ -10,10 +10,32 @@
     <h2>Goal Savings Goals</h2>
 </div>
 
-<div>
-    <p></p>
-</div>
 
+    <div>
+        <h2 th:text="${goal.title}">Goal</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Cost</th>
+                <th>Amount Saved</th>
+                <th>Completed?</th>
+                <th>Public?</th>
+            </tr>
+            </thead>
+        </table>
+
+        <table>
+            <thead>
+            <tr>
+                <td th:text="${goal.cost}"></td>
+                <td th:text="${goal.amountSaved}"></td>
+                <td th:text="${goal.completed}"></td>
+                <td th:text="${goal.isPublic}"></td>
+            </tr>
+            </thead>
+        </table>
+
+    </div>
 
 </body>
 </html>

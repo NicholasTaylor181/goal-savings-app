@@ -8,12 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("goal")
@@ -42,6 +40,21 @@ public class GoalController {
         Goal newGoal = new Goal(newGoalFormDTO.getTitle(), newGoalFormDTO.getCost(), newGoalFormDTO.getAmountSaved(), newGoalFormDTO.getIsPublic());
         goalRepository.save(newGoal);
         return "redirect:";
+    }
+
+    @GetMapping("view/{goalId}")
+    public String viewGoals(Model model, @PathVariable int goalId) {
+
+        Optional optGoal =goalRepository.findById(goalId);
+        if( optGoal.isPresent()) {
+            Goal goal = (Goal)optGoal.get();
+            model.addAttribute("goal", goal);
+            model.addAttribute("title", "View Goal");
+            return "goals/view";
+        } else {
+            return "redirect:/";
+        }
+
     }
 
 }

@@ -33,7 +33,7 @@
         <table>
             <thead>
             <tr th:each="goal : ${goals}">
-                <td><a th:href="@{'/view/' + ${goal.id}}" th:text="${goal.title}"></a></td>
+                <td><a th:href="@{'/goal/view/' + ${goal.id}}" th:text="${goal.title}"></a></td>
                 <td th:text="${goal.cost}"></td>
                 <td th:text="${goal.amountSaved}"></td>
                 <td th:text="${goal.completed}"></td>
