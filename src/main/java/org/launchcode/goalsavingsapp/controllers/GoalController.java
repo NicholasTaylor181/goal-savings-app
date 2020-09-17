@@ -50,10 +50,35 @@ public class GoalController {
             Goal goal = (Goal)optGoal.get();
             model.addAttribute("goal", goal);
             model.addAttribute("title", "View Goal");
+            model.addAttribute(new GoalFormDTO());
             return "goals/view";
         } else {
             return "redirect:/";
         }
+
+    }
+
+    @PostMapping("view/{goalId}")
+    public String processViewGoals(@ModelAttribute @Valid GoalFormDTO newGoalFormDTO, Errors errors, @PathVariable int goalId) {
+        if (errors.hasErrors()) return "goals/view/{goalId}";
+        Optional optGoal = goalRepository.findById(goalId);
+        if( optGoal.isPresent()) {
+            Goal goal = (Goal) optGoal.get();
+            goal.setTitle(newGoalFormDTO.getTitle());
+            goal.setCost(newGoalFormDTO.getCost());
+            goal.setAmountSaved(newGoalFormDTO.getAmountSaved());
+            goal.setPublic(newGoalFormDTO.getIsPublic());
+            goal.setIsCompleted();
+            goalRepository.save(goal);
+
+
+        }
+        return "redirect:";
+    }
+
+    @PostMapping("save/{myData}")
+    public void processEditTable(@PathVariable String myData) {
+        //goal.setTitle();
 
     }
 

@@ -69,7 +69,7 @@ public class Goal extends AbstractEntity {
         isPublic = aPublic;
     }
 
-    private void setIsCompleted() {
+    public void setIsCompleted() {
         completed = cost == amountSaved;
     }
 
