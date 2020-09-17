@@ -6,14 +6,7 @@ function edit(element){
     var goals = {};
 	var tr = jQuery(element).parent().parent();
 	if(!tr.hasClass("editing")) {
-	    let goal = {
-                id: null,
-                title: null,
-                cost: null,
-                amountSaved: null,
-                completed: null,
-                public: null
-            };
+
 
 		tr.addClass("editing");
 		tr.find("DIV.td").each(function(){
@@ -21,16 +14,7 @@ function edit(element){
 
 			var value = jQuery(this).text();
 
-			    if(goal["id"] === null) {
-			        goal["id"] = $(this).attr("id");
-			    }
 
-			    for (item in goal) {
-			        if(goal[item] === null ) {
-			            goal[item] = value;
-			            break
-			        }
-			    }
 
 
 				//find the id in value and pull
@@ -53,9 +37,7 @@ function edit(element){
 
 //               });
 
-            for (item in goal) {
-            alert(item + " " + goal[item]);
-            }
+
 
 
 			} else {
@@ -64,15 +46,54 @@ function edit(element){
 		});
 	} else {
 		tr.removeClass("editing");
+
+		var goal = {
+            id: null,
+            title: null,
+            cost: null,
+            amountSaved: null,
+            completed: null,
+            public: null
+        };
+
+        var goalLength = Object.keys(goal).length - 1;
+
 		tr.find("DIV.td").each(function(){
+
+
+
 			if(!jQuery(this).hasClass("action")){
+
 
 
 
 				var value = jQuery(this).find("INPUT").val();
 
+
+				if(goal["id"] === null) {
+                			        goal["id"] = $(this).attr("id");
+                			    }
+
+                			    for (item in goal) {
+                			        if(goal[item] === null ) {
+                			            goal[item] = value;
+                			            if(!(goal[Object.keys(goal)[goalLength]] === null)) {
+                			            alert(goal["public"]);
+                			            //save here
+                			            }else{
+                			            break
+                			            }
+                			        }
+                			    }
+
+//                alert(goal["public"]);
+//                alert(goal[Object.keys(goal)[goalLength]])
 				jQuery(this).text(value);
 				jQuery(this).find("INPUT").remove();
+
+//				for (item in goal) {
+//                            alert(item + " " + goal[item]);
+//                            }
 
 			} else {
 				jQuery(this).find("BUTTON").text("edit");
