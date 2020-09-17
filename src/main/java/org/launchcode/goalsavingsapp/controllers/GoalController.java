@@ -1,7 +1,6 @@
 package org.launchcode.goalsavingsapp.controllers;
 
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.launchcode.goalsavingsapp.models.Goal;
 import org.launchcode.goalsavingsapp.models.data.GoalRepository;
 import org.launchcode.goalsavingsapp.models.dto.GoalFormDTO;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.io.IOException;
 import java.util.Optional;
 
 @Controller
@@ -80,10 +78,20 @@ public class GoalController {
     }
 
 
-    @RequestMapping(value="/gDirecotry/ajax/searchUserProfiles.html",method=RequestMethod.POST)
+    @RequestMapping(value="/saveGoal.html",method=RequestMethod.POST)
 
     public  @ResponseBody String  getSearchUserProfiles(@RequestBody Goal goal, HttpServletRequest request) {
-        System.out.println(goal.getId());
+
+        Optional optGoal = goalRepository.findById(goal.getId());
+        if( optGoal.isPresent()) {
+            Goal updatedGoal = (Goal) optGoal.get();
+            updatedGoal.setTitle(goal.getTitle());
+            updatedGoal.setCost(goal.getCost());
+            updatedGoal.setAmountSaved(goal.getAmountSaved());
+            updatedGoal.setPublic(goal.getIsPublic());
+            updatedGoal.setIsCompleted();
+            goalRepository.save(updatedGoal);
+        }
 
 
 

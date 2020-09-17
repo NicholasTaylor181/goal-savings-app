@@ -15,27 +15,9 @@ function edit(element){
 			var value = jQuery(this).text();
 
 
-
-
-				//find the id in value and pull
-
-
 				jQuery(this).text("");
 
 				jQuery(this).append('<input type="text" value="'+value+'" />');
-//				$(document).on("click","#saveData", function(){
-//                      var myData = $("#myData").text();
-//                      $.ajax({
-//                          url: 'save/',
-//                          type: 'POST',
-//                          dataType: 'json',
-//                          data: { 'myData': value, jQuery(this) },
-//                          success: function(data){
-//                             alert('Save');
-//                          }
-//                      });
-
-//               });
 
 
 
@@ -78,29 +60,16 @@ function edit(element){
                 			        if(goal[item] === null ) {
                 			            goal[item] = value;
                 			            if(!(goal[Object.keys(goal)[goalLength]] === null)) {
- //               			            alert(goal["public"]);
 
                                         var jsonGoal = JSON.stringify(goal);
-                                        //alert(jsonGoal);
 
-//                                        $.ajax({
-//                                                  url: 'localhost:8080/goal/save',
-//                                                  type: 'POST',
-//                                                  dataType: 'json',
-//                                                  contentType: 'application/json; charset=utf-8',
-//                                                  async: false,
-//                                                  data: JSON.stringify(goal),
-//                                                  success: function(result){
-//                                                     alert('Save');
-//                                                  }
-//                                              });
 
 
                                                 $.ajax({
                                                        type: "POST",
                                                        contentType : 'application/json; charset=utf-8',
                                                        dataType : 'json',
-                                                       url: "/goal/gDirecotry/ajax/searchUserProfiles.html",
+                                                       url: "/goal/saveGoal.html",
                                                        data: JSON.stringify(goal),
                                                        success :function(result) {
                                                        alert(JSON.stringify(goal));
@@ -121,10 +90,3 @@ function edit(element){
 		});
 	}
 }
-
-
-//give unique id
-
-// make javascript object for goal?
-// json.stringify? convert object to string
-//json.parse? goes back to javascript

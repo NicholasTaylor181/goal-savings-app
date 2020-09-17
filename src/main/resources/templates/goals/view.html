@@ -25,25 +25,19 @@
             </thead>
         </table>
 
-        <label for="cost"></label>
-        <label for="amountSaved"></label>
-        <label for="completed"></label>
-        <label for="isPublic"></label>
         <table>
             <thead>
             <tr>
-                <input>
-                <td id="cost" th:text="${goal.cost}"></td>
-                <td id="amountSaved" th:text="${goal.amountSaved}"></td>
-                <td id="completed" th:text="${goal.completed}"></td>
-                <td id="isPublic" th:text="${goal.isPublic}"></td>
+
+                <td th:text="${goal.cost}"></td>
+                <td th:text="${goal.amountSaved}"></td>
+                <td th:text="${goal.completed}"></td>
+                <td th:text="${goal.isPublic}"></td>
             </tr>
             </thead>
         </table>
 
     </div>
-
-    <input type="submit" value="Create" />
 </form>
 
 </body>
