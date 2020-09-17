@@ -78,22 +78,42 @@ function edit(element){
                 			        if(goal[item] === null ) {
                 			            goal[item] = value;
                 			            if(!(goal[Object.keys(goal)[goalLength]] === null)) {
-                			            alert(goal["public"]);
-                			            //save here
+ //               			            alert(goal["public"]);
+
+                                        var jsonGoal = JSON.stringify(goal);
+                                        //alert(jsonGoal);
+
+//                                        $.ajax({
+//                                                  url: 'localhost:8080/goal/save',
+//                                                  type: 'POST',
+//                                                  dataType: 'json',
+//                                                  contentType: 'application/json; charset=utf-8',
+//                                                  async: false,
+//                                                  data: JSON.stringify(goal),
+//                                                  success: function(result){
+//                                                     alert('Save');
+//                                                  }
+//                                              });
+
+
+                                                $.ajax({
+                                                       type: "POST",
+                                                       contentType : 'application/json; charset=utf-8',
+                                                       dataType : 'json',
+                                                       url: "/goal/gDirecotry/ajax/searchUserProfiles.html",
+                                                       data: JSON.stringify(goal),
+                                                       success :function(result) {
+                                                       alert(JSON.stringify(goal));
+                                                       }
+                                                   });
+
                 			            }else{
                 			            break
                 			            }
                 			        }
                 			    }
-
-//                alert(goal["public"]);
-//                alert(goal[Object.keys(goal)[goalLength]])
 				jQuery(this).text(value);
 				jQuery(this).find("INPUT").remove();
-
-//				for (item in goal) {
-//                            alert(item + " " + goal[item]);
-//                            }
 
 			} else {
 				jQuery(this).find("BUTTON").text("edit");

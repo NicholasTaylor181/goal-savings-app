@@ -1,6 +1,7 @@
 package org.launchcode.goalsavingsapp.models;
 
 
+
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 
@@ -19,6 +20,7 @@ public class Goal extends AbstractEntity {
 
 
     private boolean completed;
+
 
     public Goal() {}
 

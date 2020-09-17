@@ -1,6 +1,7 @@
 package org.launchcode.goalsavingsapp.controllers;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.launchcode.goalsavingsapp.models.Goal;
 import org.launchcode.goalsavingsapp.models.data.GoalRepository;
 import org.launchcode.goalsavingsapp.models.dto.GoalFormDTO;
@@ -10,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.Optional;
 
 @Controller
@@ -76,10 +79,16 @@ public class GoalController {
         return "redirect:";
     }
 
-    @PostMapping("save/{myData}")
-    public void processEditTable(@PathVariable String myData) {
-        //goal.setTitle();
 
+    @RequestMapping(value="/gDirecotry/ajax/searchUserProfiles.html",method=RequestMethod.POST)
+
+    public  @ResponseBody String  getSearchUserProfiles(@RequestBody Goal goal, HttpServletRequest request) {
+        System.out.println(goal.getId());
+
+
+
+
+        return "redirect:";
     }
 
 }
