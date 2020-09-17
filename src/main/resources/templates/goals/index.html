@@ -24,7 +24,7 @@
             <div class="tbody">
             <form class="tr" th:each="goal : ${goals}">
                 <p th:text="${goal.id}" hidden></p>
-                <div class="td"><a th:href="@{'/goal/view/' + ${goal.id}}" id="title" th:id="${goal.id}" th:text="${goal.title}"></a></div>
+                <div class="td" th:id="${goal.id}"><a th:href="@{'/goal/view/' + ${goal.id}}" th:text="${goal.title}"></a></div>
                 <div class="td" th:text="${goal.cost}"></div>
                 <div class="td" th:text="${goal.amountSaved}"></div>
                 <div class="td" th:text="${goal.completed}"></div>

@@ -1,16 +1,40 @@
 function edit(element){
-    var data = "";
+
+
+
+
+    var goals = {};
 	var tr = jQuery(element).parent().parent();
 	if(!tr.hasClass("editing")) {
+	    let goal = {
+                id: null,
+                title: null,
+                cost: null,
+                amountSaved: null,
+                completed: null,
+                public: null
+            };
+
 		tr.addClass("editing");
 		tr.find("DIV.td").each(function(){
 			if(!jQuery(this).hasClass("action")){
 
-			    var tempId = jQuery(this).html();
-				var value = jQuery(this).text();
+			var value = jQuery(this).text();
+
+			    if(goal["id"] === null) {
+			        goal["id"] = $(this).attr("id");
+			    }
+
+			    for (item in goal) {
+			        if(goal[item] === null ) {
+			            goal[item] = value;
+			            break
+			        }
+			    }
+
+
 				//find the id in value and pull
 
-                alert($(this).attr("id"));
 
 				jQuery(this).text("");
 
@@ -28,6 +52,12 @@ function edit(element){
 //                      });
 
 //               });
+
+            for (item in goal) {
+            alert(item + " " + goal[item]);
+            }
+
+
 			} else {
 				jQuery(this).find("BUTTON").text("save");
 			}
