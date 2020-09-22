@@ -14,6 +14,7 @@
     <p th:unless="${goals} and ${goals.size()}">No Goals!</p>
     <div class="thead">
             <div class="tr">
+                <div class="td">Username</div>
                 <div class="td">Title</div>
                 <div class="td">Cost</div>
                 <div class="td">Amount Saved</div>
@@ -24,12 +25,13 @@
             <div class="tbody">
             <form class="tr" th:each="goal : ${goals}">
                 <p th:text="${goal.id}" hidden></p>
-                <div class="td" th:id="${goal.id}"><a th:href="@{'/goal/view/' + ${goal.id}}" th:text="${goal.title}"></a></div>
-                <div class="td" th:text="${goal.cost}"></div>
-                <div class="td" th:text="${goal.amountSaved}"></div>
-                <div class="td" th:text="${goal.completed}"></div>
-                <div class="td" id="isPublic" th:id="${goal.id} + ' isPublic'" th:text="${goal.isPublic}"></div>
-                <div class="td action"><button type="button" onclick="edit(this);">edit</button></div>
+                <div class="tdpermanent" th:text="${goal.user.username}"></div>
+                <div class="td" th:class="${goal.user == user} ? 'td' : 'tdpermanent'" th:id="${goal.id}"><a th:href="@{'/goal/view/' + ${goal.id}}" th:text="${goal.title}"></a></div>
+                <div class="td" th:class="${goal.user == user} ? 'td' : 'tdpermanent'" th:text="${goal.cost}"></div>
+                <div class="td" th:class="${goal.user == user} ? 'td' : 'tdpermanent'" th:text="${goal.amountSaved}"></div>
+                <div class="td" th:class="${goal.user == user} ? 'td' : 'tdpermanent'" th:text="${goal.completed}"></div>
+                <div class="td"  th:class="${goal.user == user} ? 'td' : 'tdpermanent'" th:text="${goal.isPublic}"></div>
+                <div class="td action" th:if="${goal.user == user}"><button type="button" onclick="edit(this);">edit</button></div>
             </form>
             </div>
         </div>

@@ -25,6 +25,12 @@
 	border:1px solid black;
 	padding:1px;
 }
+.tdpermanent
+{
+	display:table-cell;
+	border:1px solid black;
+	padding:1px;
+}
 .tr.editing .td INPUT
 {
 	width:100px;
