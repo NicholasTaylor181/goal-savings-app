@@ -3,6 +3,7 @@ package org.launchcode.goalsavingsapp.models;
 
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -22,19 +23,25 @@ public class Goal extends AbstractEntity {
     private boolean completed;
 
 
+    @ManyToOne
+    private User user;
+
+
     public Goal() {}
 
-    public Goal(@NotNull String title, @NotNull int cost, boolean isPublic) {
+    public Goal(@NotNull String title, @NotNull int cost, boolean isPublic, User user) {
         this.title = title;
         this.cost = cost;
         this.isPublic = isPublic;
+        this.user = user;
     }
 
-    public Goal(@NotNull String title, @NotNull int cost, int amountSaved, boolean isPublic) {
+    public Goal(@NotNull String title, @NotNull int cost, int amountSaved, boolean isPublic, User user) {
         this.title = title;
         this.cost = cost;
         this.isPublic = isPublic;
         this.amountSaved = amountSaved;
+        this.user = user;
         setIsCompleted();
 
     }
@@ -74,9 +81,6 @@ public class Goal extends AbstractEntity {
     public void setIsCompleted() {
         completed = cost == amountSaved;
     }
-
-
-
 
     public boolean isCompleted() {
         return completed;

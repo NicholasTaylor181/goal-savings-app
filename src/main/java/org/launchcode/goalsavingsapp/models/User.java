@@ -4,7 +4,11 @@ package org.launchcode.goalsavingsapp.models;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User extends AbstractEntity{
@@ -16,6 +20,10 @@ public class User extends AbstractEntity{
     private String passwordHash;
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+    @OneToMany(mappedBy = "user")
+//    @JoinColumn
+    private List<Goal> goals = new ArrayList<>();
 
     public User() {}
 
@@ -32,6 +40,13 @@ public class User extends AbstractEntity{
     public boolean isMatchingPassword(String password) {
         return encoder.matches(password, passwordHash);
     }
-    //tests if the passwords match while still being secure with hashing
 
+
+    public List<Goal> getGoals() {
+        return goals;
+    }
+
+    public void setGoals(List<Goal> goals) {
+        this.goals = goals;
+    }
 }

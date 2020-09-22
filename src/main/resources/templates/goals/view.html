@@ -10,35 +10,34 @@
     <h2>Goal Savings Goal View</h2>
 </div>
 
-<form method="post">
     <div>
-        <label for="title">Title</label>
-        <input id="title" th:field="${goal.title}">
-        <table>
-            <thead>
-            <tr>
-                <th>Cost</th>
-                <th>Amount Saved</th>
-                <th>Completed?</th>
-                <th>Public?</th>
-            </tr>
-            </thead>
-        </table>
 
-        <table>
-            <thead>
-            <tr>
 
-                <td th:text="${goal.cost}"></td>
-                <td th:text="${goal.amountSaved}"></td>
-                <td th:text="${goal.completed}"></td>
-                <td th:text="${goal.isPublic}"></td>
-            </tr>
-            </thead>
-        </table>
 
+        <h2 th:text="${goal.title}">Goal</h2>
+        <div class="table">
+            <div class="thead">
+                <div class="tr">
+                    <div class="td">Title</div>
+                    <div class="td">Cost</div>
+                    <div class="td">Amount Saved</div>
+                    <div class="td">Completed?</div>
+                    <div class="td">Public?</div>
+                </div>
+            </div>
+            <div class="tbody">
+                <form class="tr">
+                    <p th:text="${goal.id}" hidden></p>
+                    <div class="td" th:id="${goal.id}" th:text="${goal.title}"></div>
+                    <div class="td" th:text="${goal.cost}"></div>
+                    <div class="td" th:text="${goal.amountSaved}"></div>
+                    <div class="td" th:text="${goal.completed}"></div>
+                    <div class="td" id="isPublic" th:id="${goal.id} + ' isPublic'" th:text="${goal.isPublic}"></div>
+                    <div class="td action"><button type="button" onclick="edit(this);">edit</button></div>
+                </form>
+            </div>
+        </div>
     </div>
-</form>
 
 </body>
 </html>

@@ -20,6 +20,8 @@ public class GoalFormDTO {
 
     private boolean completed;
 
+    private String username;
+
     public String getTitle() {
         return title;
     }
@@ -42,6 +44,14 @@ public class GoalFormDTO {
 
     public void setAmountSaved(int amountSaved) {
         this.amountSaved = amountSaved;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public boolean getIsPublic() {
