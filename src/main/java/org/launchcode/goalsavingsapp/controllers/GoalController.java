@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -27,9 +30,18 @@ public class GoalController {
     private AuthenticationController authenticationController;
 
     @GetMapping
-    public String viewGoals(Model model) {
+    public String viewMyGoals(HttpServletRequest request, Model model) {
+
+        List<Goal> goalList = new ArrayList<>();
+        HttpSession session = request.getSession();
+        User user = authenticationController.getUserFromSession(session);
+        for (Goal goal : goalRepository.findAll()) {
+            if (goal.getUser() == user) {
+                goalList.add(goal);
+            }
+        }
         model.addAttribute("title", "My Goals");
-        model.addAttribute("goals", goalRepository.findAll());
+        model.addAttribute("goals", goalList);
         return "goals/index";
     }
 
@@ -107,6 +119,23 @@ public class GoalController {
 
 
         return "redirect:";
+    }
+
+    @GetMapping("public")
+    public String viewPublicGoals(HttpServletRequest request, Model model) {
+
+        List<Goal> goalList = new ArrayList<>();
+        HttpSession session = request.getSession();
+        User user = authenticationController.getUserFromSession(session);
+        for (Goal goal : goalRepository.findAll()) {
+            if (goal.getIsPublic()) {
+                goalList.add(goal);
+            }
+        }
+        model.addAttribute("user", user);
+        model.addAttribute("title", "Public Goals");
+        model.addAttribute("goals", goalList);
+        return "goals/public";
     }
 
 }

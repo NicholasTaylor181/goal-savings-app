@@ -21,7 +21,8 @@
                 <li th:if="${title.contains('Register')}"><a th:href="@{/login}">Login</a></li>
             </ul>
             <ul th:unless="${title.contains('Login') or title.contains('Register')} ">
-                <li><a th:href="@{/goal}">View Goals</a></li>
+                <li><a th:href="@{/goal}">View My Goals</a></li>
+                <li><a th:href="@{/goal/public}">View Public Goals</a></li>
                 <li><a th:href="@{/goal/create}">Add Goals</a></li>
                 <li><a th:href="@{/logout}">Logout</a></li>
             </ul>
