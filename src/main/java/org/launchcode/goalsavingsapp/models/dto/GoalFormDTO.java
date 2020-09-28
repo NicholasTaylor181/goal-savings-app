@@ -3,6 +3,7 @@ package org.launchcode.goalsavingsapp.models.dto;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 
 public class GoalFormDTO {
 
@@ -20,6 +21,8 @@ public class GoalFormDTO {
 
     private boolean completed;
 
+    private LocalDate goalDate;
+
     public String getTitle() {
         return title;
     }
@@ -34,6 +37,18 @@ public class GoalFormDTO {
 
     public void setCost(int cost) {
         this.cost = cost;
+    }
+
+    public LocalDate getGoalDate() {
+        return goalDate;
+    }
+
+    public void setGoalDate(String goalDate) {
+        String[] goalDateArr = goalDate.split("-");
+        int year = Integer.parseInt(goalDateArr[0]);
+        int month = Integer.parseInt(goalDateArr[1]);
+        int day = Integer.parseInt(goalDateArr[2]);
+        this.goalDate = LocalDate.of(year, month, day);
     }
 
     public int getAmountSaved() {

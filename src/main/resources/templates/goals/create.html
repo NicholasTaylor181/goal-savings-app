@@ -31,7 +31,7 @@
     </div>
     <div>
         <label>Goal End Date
-            <input type="date" id="goalDate" th:attr="min=${#temporals.format(localDate, 'yyyy-MM-dd')},value=${#temporals.format(localDate, 'yyyy-MM-dd')}" >
+            <input type="date" id="goalDate" name="goalDate" th:attr="min=${#temporals.format(localDate, 'yyyy-MM-dd')},value=${#temporals.format(localDate, 'yyyy-MM-dd')}" >
 
         </label>
     </div>

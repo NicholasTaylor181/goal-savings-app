@@ -41,24 +41,24 @@ public class Goal extends AbstractEntity {
 
     public Goal() {}
 
-    public Goal(@NotNull String title, @NotNull int cost, boolean isPublic, User user) {
+    public Goal(@NotNull String title, @NotNull int cost, boolean isPublic, User user, LocalDate goalDate) {
         this.title = title;
         this.cost = cost;
         this.isPublic = isPublic;
         this.user = user;
         this.startDate = LocalDate.now();
-        this.goalDate = LocalDate.of(2020, Month.DECEMBER, 15);
+        this.goalDate = goalDate;
         this.completeDate = null;
     }
 
-    public Goal(@NotNull String title, @NotNull int cost, int amountSaved, boolean isPublic, User user) {
+    public Goal(@NotNull String title, @NotNull int cost, int amountSaved, boolean isPublic, User user, LocalDate goalDate) {
         this.title = title;
         this.cost = cost;
         this.isPublic = isPublic;
         this.amountSaved = amountSaved;
         this.user = user;
         this.startDate = LocalDate.now();
-        this.goalDate = LocalDate.of(2020, Month.DECEMBER, 15);
+        this.goalDate = goalDate;
         this.completeDate = null;
         setIsCompleted();
 
