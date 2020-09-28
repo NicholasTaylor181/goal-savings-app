@@ -18,26 +18,26 @@
         <p th:errors="${goalFormDTO.title}"></p>
     </div>
     <div>
-        <label>cost
+        <label>Cost
             <input th:field="${goalFormDTO.cost}">
         </label>
         <p th:errors="${goalFormDTO.cost}"></p>
     </div>
     <div>
-        <label>amountSaved
+        <label>Amount Saved
             <input th:field="${goalFormDTO.amountSaved}">
         </label>
         <p th:errors="${goalFormDTO.amountSaved}"></p>
     </div>
     <div>
-        <label>
-            <input type="date" id="goalDate" min="2018-01-01">
+        <label>Goal End Date
+            <input type="date" id="goalDate" th:attr="min=${#temporals.format(localDate, 'yyyy-MM-dd')},value=${#temporals.format(localDate, 'yyyy-MM-dd')}" >
 
         </label>
     </div>
 
     <div>
-    <label>isPublic
+    <label>Public?
         <input type="checkbox" name="isPublic" th:checked="${goalFormDTO.isPublic}">
     </label>
 </div>

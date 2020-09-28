@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -50,6 +51,7 @@ public class GoalController {
 
         model.addAttribute("title", "Create Goals");
         model.addAttribute(new GoalFormDTO());
+        model.addAttribute("localDate", LocalDate.now());
         return "goals/create";
     }
 
