@@ -5,6 +5,10 @@ package org.launchcode.goalsavingsapp.models;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.Calendar;
+import java.util.Date;
 
 @Entity
 public class Goal extends AbstractEntity {
@@ -26,6 +30,14 @@ public class Goal extends AbstractEntity {
     @ManyToOne
     private User user;
 
+    private LocalDate startDate;
+
+    private LocalDate goalDate;
+
+    private LocalDate completeDate;
+
+//    LocalDate localDate_Norway = zdt_Norway.toLocalDate();
+
 
     public Goal() {}
 
@@ -34,6 +46,9 @@ public class Goal extends AbstractEntity {
         this.cost = cost;
         this.isPublic = isPublic;
         this.user = user;
+        this.startDate = LocalDate.now();
+        this.goalDate = LocalDate.of(2020, Month.DECEMBER, 15);
+        this.completeDate = null;
     }
 
     public Goal(@NotNull String title, @NotNull int cost, int amountSaved, boolean isPublic, User user) {
@@ -42,6 +57,9 @@ public class Goal extends AbstractEntity {
         this.isPublic = isPublic;
         this.amountSaved = amountSaved;
         this.user = user;
+        this.startDate = LocalDate.now();
+        this.goalDate = LocalDate.of(2020, Month.DECEMBER, 15);
+        this.completeDate = null;
         setIsCompleted();
 
     }
@@ -83,7 +101,7 @@ public class Goal extends AbstractEntity {
     }
 
     public void setIsCompleted() {
-        completed = cost == amountSaved;
+        completed = cost == amountSaved; if(completed) {completeDate = LocalDate.now();}
     }
 
     public boolean isCompleted() {

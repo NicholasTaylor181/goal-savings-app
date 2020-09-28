@@ -33,7 +33,7 @@
                     <div class="td" th:text="${goal.amountSaved}"></div>
                     <div class="td" th:text="${goal.completed}"></div>
                     <div class="td" id="isPublic" th:id="${goal.id} + ' isPublic'" th:text="${goal.isPublic}"></div>
-                    <div class="td action"><button type="button" onclick="edit(this);">edit</button></div>
+                    <div class="td action" th:if="${goal.user == user}"><button type="button" onclick="edit(this);">edit</button></div>
                 </form>
             </div>
         </div>

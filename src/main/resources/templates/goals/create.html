@@ -30,6 +30,13 @@
         <p th:errors="${goalFormDTO.amountSaved}"></p>
     </div>
     <div>
+        <label>
+            <input type="date" id="goalDate" min="2018-01-01">
+
+        </label>
+    </div>
+
+    <div>
     <label>isPublic
         <input type="checkbox" name="isPublic" th:checked="${goalFormDTO.isPublic}">
     </label>
